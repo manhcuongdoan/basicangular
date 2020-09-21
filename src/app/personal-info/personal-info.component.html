@@ -1,0 +1,60 @@
+<div class="form">
+    <div class="p-field p-grid">
+        <label class="p-col-fixed" style="width:100px">Firstname:</label>
+        <input #first_name type="text" pInputText>
+    </div>
+    <div class="p-field p-grid">
+        <label class="p-col-fixed" style="width:100px">Lastname:</label>
+        <input #last_name type="text" pInputText>
+    </div>
+    <div class="p-field p-grid">
+        <label class="p-col-fixed" style="width:100px">Email:</label>
+        <input #email type="text" pInputText>
+    </div>
+    <div class="p-field p-grid">
+        <label class="p-col-fixed" style="width:100px">Avatar:</label>
+        <input #avatarlink type="text" pInputText>
+    </div>
+
+    <button pButton type="button" label="Submit" class="p-button-text"
+        (click)="addInfo(first_name.value, last_name.value, email.value, avatarlink.value); first_name.value=''; last_name.value=''; email.value=''; avatarlink.value=''">
+    </button>
+</div>
+
+<p-table [value]="personalInfos" [resizableColumns]="true" [responsive]="true" class="form">
+    <ng-template pTemplate="header">
+        <tr>
+            <th style="width:2%">Id</th>
+            <th style="width:5%">Email</th>
+            <th style="width:5%">First Name</th>
+            <th style="width:5%;">Last Name</th>
+            <th style="width:8%;">Avatar link</th>
+            <th style="width:5%">Detail</th>
+            <th style="width:2%">Delete</th>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-personalInfo>
+        <tr>
+            <td>{{ personalInfo.id }}</td>
+            <td>{{ personalInfo.email }}</td>
+            <td>{{ personalInfo.first_name }}</td>
+            <td>{{ personalInfo.last_name }}</td>
+            <td> <img src="{{ personalInfo.avatar }}" alt=""> </td>
+            <td><a routerLink="/detail/{{ personalInfo.id }}">{{ personalInfo.first_name }}
+                    {{ personalInfo.last_name }}</a>
+            </td>
+            <td>
+                <button pButton type="button" icon="pi pi-times" class="p-button-danger p-button-rounded"
+                    (click)="deletePersonalInfo(personalInfo)"></button>
+            </td>
+        </tr>
+    </ng-template>
+</p-table>
+
+
+<ul *ngIf="advertising">
+    <li>{{ advertising.company }}</li>
+    <li><a href="{{ advertising.url }}">Đường dẫn công ty</a></li>
+    <li>{{ advertising.text}}</li>
+
+</ul>

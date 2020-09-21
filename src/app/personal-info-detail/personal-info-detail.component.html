@@ -1,0 +1,26 @@
+<div *ngIf="personalDetail">
+    <h2>{{personalDetail.first_name | uppercase}} {{personalDetail.last_name | uppercase}} Details</h2>
+    <div><span>id: </span>{{personalDetail.id}}</div>
+    <div class="p-field p-grid">
+        <label class="p-col-fixed" style="width:100px">First_name:</label>
+        <input [(ngModel)]="personalDetail.first_name" pInputText/>
+    </div>
+    <div class="p-field p-grid">
+        <label class="p-col-fixed" style="width:100px">Last_name:</label>
+        <input [(ngModel)]="personalDetail.last_name" pInputText/>
+    </div>
+    <div class="p-field p-grid">
+        <label class="p-col-fixed" style="width:100px">Avatar:</label>
+        <input [(ngModel)]="personalDetail.avatar" pInputText/>
+    </div>
+
+    <button pButton type="button" label="goBack" class="p-button-text" (click)="goBack()"></button>
+    <button pButton type="button" label="save" class="p-button-text" (click)="save()"></button>
+</div>
+
+
+<!-- 
+  Copyright Google LLC. All Rights Reserved.
+  Use of this source code is governed by an MIT-style license that
+  can be found in the LICENSE file at http://angular.io/license
+  -->
